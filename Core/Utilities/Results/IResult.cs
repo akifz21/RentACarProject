@@ -1,4 +1,6 @@
-﻿namespace Core.Utilities.Results
+﻿
+
+namespace Core.Utilities.Results
 {
     //temel voidler için
     public interface IResult

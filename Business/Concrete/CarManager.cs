@@ -6,6 +6,7 @@ using Entitites.DTOs;
 using Business.Constants;
 using Core.Aspects.Autofac.Validation;
 using Business.ValidationRules;
+using Business.BusinessAspect.Autofac;
 
 namespace Business.Concrete
 {
@@ -30,7 +31,7 @@ namespace Business.Concrete
             _carDal.Delete(car);
             return new SuccessResult();
         }
-
+        [SecuredOperation("car.list")]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());

@@ -1,6 +1,4 @@
-﻿
-
-using Core.Utilities.Results;
+﻿using Core.Utilities.Results;
 
 namespace Core.Utilities.Business
 {
@@ -14,7 +12,7 @@ namespace Core.Utilities.Business
                 {
                     return logic;
                 }
-               
+                
             }
             return null;
         }
