@@ -16,14 +16,16 @@ namespace Business.Concrete
 
         public IResult Add(Brand brand)
         {
-            return new SuccessResult();
             _brandDal.Add(brand);
+            return new SuccessResult();
+            
         }
 
         public IResult Delete(Brand brand)
         {
-            return new SuccessResult();
             _brandDal.Delete(brand);
+            return new SuccessResult();
+           
         }
 
         public IDataResult<List<Brand>> GetAll()
@@ -38,8 +40,8 @@ namespace Business.Concrete
 
         public IResult Update(Brand brand)
         {
-            return new SuccessResult();
             _brandDal.Update(brand);
+            return new SuccessResult();  
         }
     }
 }
