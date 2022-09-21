@@ -24,8 +24,9 @@ namespace Business.Concrete
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
+            car.IsRentable = true;
             _carDal.Add(car);
-            return new SuccessResult();
+            return new SuccessResult(car.CarId.ToString());
         }
 
         public IResult Delete(Car car)
@@ -81,6 +82,12 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailsDto>> GetCarDetailsByColorId(int colorId)
         {
             return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(d=>d.ColorId==colorId));
+        }
+
+        public IResult UpdateIsRentable(int carId, bool isRentable)
+        {
+            _carDal.UpdateIsRentable(carId, isRentable);
+            return new SuccessResult();
         }
     }
 }

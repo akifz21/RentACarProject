@@ -130,6 +130,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPut("updateIsRentable")]
+        public IActionResult UpdateIsRentable(int carId,bool isRentable)
+        {
+            var result = _carService.UpdateIsRentable(carId, isRentable);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         
     }
 }

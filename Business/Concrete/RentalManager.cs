@@ -2,21 +2,25 @@
 using Core.Utilities.Results;
 using Entitites.Concrete;
 using DataAccess.Abstract;
+using Core.Utilities.Business;
 
 namespace Business.Concrete
 {
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-        public RentalManager(IRentalDal rentalDal)
+        ICarService _carService;
+        public RentalManager(IRentalDal rentalDal,ICarService carService)
         {
             _rentalDal = rentalDal;
+            _carService = carService;
         }
         public IResult Add(Rental rental)
         {
-            var checkIfCarRented = rental.ReturnDate;
-            if (checkIfCarRented != null)
+            var rules = BusinessRules.Run(CheckIfCarRentable(rental.CarId)).Success;
+            if (rules)
             {
+                _carService.UpdateIsRentable(rental.CarId,false);
                 _rentalDal.Add(rental);
                 return new SuccessResult("Car Succesfully Rented");
             }
@@ -24,8 +28,8 @@ namespace Business.Concrete
             {
                 return new ErrorResult();
             }
-            
         }
+        
 
         public IResult Delete(Rental rental)
         {
@@ -48,5 +52,18 @@ namespace Business.Concrete
             _rentalDal.Update(rental);
             return new SuccessResult();
         }
+        private IResult CheckIfCarRentable(int carId)
+        {
+            var car = _carService.GetById(carId).Data;
+            if (car.IsRentable == true)
+            {
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult();
+            }
+        }
+
     }
 }

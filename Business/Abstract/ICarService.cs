@@ -9,6 +9,7 @@ namespace Business.Abstract
         IDataResult<List<Car>> GetAll();
         IDataResult<List<Car>> GetCarsByBrandId(int BrandId);
         IDataResult<List<Car>> GetCarsByColorId(int ColorId);
+        //IDataResult<Car> GetByDescription(string description);
         IDataResult<Car> GetById(int id); 
         IDataResult<List<CarDetailsDto>> GetCarDetails();
         IDataResult<CarDetailsDto> GetCarDetailById(int id);
@@ -17,5 +18,6 @@ namespace Business.Abstract
         IResult Add(Car car);
         IResult Update(Car car);
         IResult Delete(Car car);
+        IResult UpdateIsRentable(int carId, bool isRentable);
     }
 }
