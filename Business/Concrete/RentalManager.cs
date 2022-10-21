@@ -17,17 +17,15 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            var rules = BusinessRules.Run(CheckIfCarRentable(rental.CarId)).Success;
-            if (rules)
+            IResult result = BusinessRules.Run(CheckIfCarRentable(rental.CarId));
+            if (result!=null)
             {
-                _carService.UpdateIsRentable(rental.CarId,false);
-                _rentalDal.Add(rental);
-                return new SuccessResult("Car Succesfully Rented");
+                return result;
             }
-            else
-            {
-                return new ErrorResult();
-            }
+             _carService.UpdateIsRentable(rental.CarId, false);
+             rental.RentDate = DateTime.Now;
+             _rentalDal.Add(rental);
+             return new SuccessResult("Car Succesfully Rented");
         }
         
 
@@ -54,14 +52,14 @@ namespace Business.Concrete
         }
         private IResult CheckIfCarRentable(int carId)
         {
-            var car = _carService.GetById(carId).Data;
+            Car car = _carService.GetById(carId).Data;
             if (car.IsRentable == true)
             {
                 return new SuccessResult();
             }
             else
             {
-                return new ErrorResult();
+                return new ErrorResult("Car is not rentable");
             }
         }
 

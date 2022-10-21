@@ -4,6 +4,7 @@ using DataAccess.Concrete.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarContext))]
-    partial class RentACarContextModelSnapshot : ModelSnapshot
+    [Migration("20220921144409_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,8 +90,8 @@ namespace DataAccess.Migrations
                             Email = "akif@ozdemir.com",
                             FirstName = "Mehmet Akif",
                             LastName = "Özdemir",
-                            PasswordHash = new byte[] { 76, 145, 155, 123, 143, 217, 23, 13, 172, 174, 73, 235, 177, 103, 84, 23, 250, 158, 229, 179, 163, 15, 121, 133, 86, 88, 104, 46, 81, 197, 61, 226, 200, 96, 153, 31, 136, 192, 178, 142, 30, 218, 26, 93, 242, 194, 126, 27, 145, 222, 45, 134, 18, 114, 210, 172, 108, 152, 187, 16, 242, 69, 242, 153 },
-                            PasswordSalt = new byte[] { 229, 64, 172, 188, 93, 27, 148, 149, 195, 157, 71, 146, 228, 143, 88, 229, 174, 186, 233, 167, 238, 176, 180, 4, 34, 38, 8, 70, 207, 40, 204, 30, 0, 254, 16, 252, 194, 19, 46, 105, 131, 185, 29, 130, 195, 45, 196, 193, 166, 151, 183, 21, 236, 233, 82, 44, 16, 218, 223, 41, 37, 63, 242, 155, 255, 52, 6, 114, 61, 183, 252, 236, 85, 148, 144, 27, 181, 33, 226, 197, 59, 14, 101, 142, 169, 176, 33, 39, 245, 241, 12, 216, 214, 240, 185, 112, 196, 62, 21, 18, 17, 186, 116, 175, 142, 225, 66, 182, 84, 81, 243, 89, 133, 41, 29, 14, 98, 167, 111, 87, 34, 56, 0, 47, 249, 22, 126, 208 },
+                            PasswordHash = new byte[] { 226, 14, 87, 198, 179, 73, 167, 110, 207, 34, 79, 34, 214, 48, 103, 10, 210, 187, 89, 36, 149, 133, 241, 67, 66, 241, 194, 205, 60, 235, 120, 160, 13, 152, 185, 89, 210, 16, 60, 176, 83, 117, 174, 116, 33, 99, 12, 162, 51, 170, 86, 114, 229, 141, 172, 35, 193, 204, 136, 115, 16, 46, 231, 227 },
+                            PasswordSalt = new byte[] { 47, 184, 225, 167, 97, 248, 86, 204, 63, 59, 111, 239, 109, 131, 130, 65, 41, 122, 167, 37, 216, 249, 245, 46, 65, 137, 100, 36, 234, 164, 103, 86, 190, 22, 149, 246, 150, 16, 188, 27, 86, 226, 93, 59, 1, 7, 3, 248, 109, 9, 85, 238, 10, 67, 170, 107, 68, 189, 128, 186, 253, 3, 147, 45, 233, 215, 250, 242, 218, 47, 60, 192, 81, 175, 141, 251, 196, 57, 156, 135, 211, 190, 217, 77, 119, 80, 90, 8, 111, 189, 57, 192, 115, 169, 92, 86, 4, 210, 67, 13, 115, 195, 18, 175, 3, 99, 195, 119, 111, 41, 148, 20, 214, 52, 3, 58, 202, 162, 56, 238, 9, 61, 23, 124, 179, 103, 181, 153 },
                             Status = true
                         });
                 });
@@ -206,9 +208,9 @@ namespace DataAccess.Migrations
                             ColorId = 3,
                             DailyPrice = 400,
                             Description = "Fabia",
-                            IsRentable = true,
+                            IsRentable = false,
                             ModelYear = 2018,
-                            OwnerId = 1
+                            OwnerId = 0
                         },
                         new
                         {
@@ -217,9 +219,9 @@ namespace DataAccess.Migrations
                             ColorId = 4,
                             DailyPrice = 500,
                             Description = "Tiguan",
-                            IsRentable = true,
+                            IsRentable = false,
                             ModelYear = 2020,
-                            OwnerId = 1
+                            OwnerId = 0
                         },
                         new
                         {
@@ -228,9 +230,9 @@ namespace DataAccess.Migrations
                             ColorId = 1,
                             DailyPrice = 300,
                             Description = "Fluence",
-                            IsRentable = true,
+                            IsRentable = false,
                             ModelYear = 2018,
-                            OwnerId = 1
+                            OwnerId = 0
                         },
                         new
                         {
@@ -239,9 +241,9 @@ namespace DataAccess.Migrations
                             ColorId = 5,
                             DailyPrice = 400,
                             Description = "Golf",
-                            IsRentable = true,
+                            IsRentable = false,
                             ModelYear = 2010,
-                            OwnerId = 1
+                            OwnerId = 0
                         },
                         new
                         {
@@ -250,9 +252,9 @@ namespace DataAccess.Migrations
                             ColorId = 2,
                             DailyPrice = 800,
                             Description = "X7",
-                            IsRentable = true,
+                            IsRentable = false,
                             ModelYear = 2018,
-                            OwnerId = 1
+                            OwnerId = 0
                         });
                 });
 
@@ -284,35 +286,35 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             CarId = 1,
-                            Date = new DateTime(2022, 9, 21, 18, 2, 20, 413, DateTimeKind.Local).AddTicks(7749),
+                            Date = new DateTime(2022, 9, 21, 17, 44, 9, 216, DateTimeKind.Local).AddTicks(2929),
                             ImagePath = "3cffc9b7-e111-4f2e-98bb-70f38a325232.jpg"
                         },
                         new
                         {
                             Id = 2,
                             CarId = 2,
-                            Date = new DateTime(2022, 9, 21, 18, 2, 20, 413, DateTimeKind.Local).AddTicks(7760),
+                            Date = new DateTime(2022, 9, 21, 17, 44, 9, 216, DateTimeKind.Local).AddTicks(2939),
                             ImagePath = "2e73e3d1-4add-4b63-8e2d-5fec0188ef5d.jpg"
                         },
                         new
                         {
                             Id = 3,
                             CarId = 3,
-                            Date = new DateTime(2022, 9, 21, 18, 2, 20, 413, DateTimeKind.Local).AddTicks(7761),
+                            Date = new DateTime(2022, 9, 21, 17, 44, 9, 216, DateTimeKind.Local).AddTicks(2940),
                             ImagePath = "35676709-24bd-4b90-90df-d737bf8d1159.jpg"
                         },
                         new
                         {
                             Id = 4,
                             CarId = 4,
-                            Date = new DateTime(2022, 9, 21, 18, 2, 20, 413, DateTimeKind.Local).AddTicks(7762),
+                            Date = new DateTime(2022, 9, 21, 17, 44, 9, 216, DateTimeKind.Local).AddTicks(2940),
                             ImagePath = "d6448427-0c49-4219-a8bf-625726cd1ad8.jpg"
                         },
                         new
                         {
                             Id = 5,
                             CarId = 5,
-                            Date = new DateTime(2022, 9, 21, 18, 2, 20, 413, DateTimeKind.Local).AddTicks(7762),
+                            Date = new DateTime(2022, 9, 21, 17, 44, 9, 216, DateTimeKind.Local).AddTicks(2941),
                             ImagePath = "c694f801-94c7-4217-9bde-f219e91825e7.jpg"
                         });
                 });
@@ -372,7 +374,7 @@ namespace DataAccess.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("RentDate")
+                    b.Property<DateTime>("RentDate")
                         .HasColumnType("date");
 
                     b.Property<DateTime>("ReturnDate")

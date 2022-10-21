@@ -42,11 +42,11 @@ namespace DataAccess.Concrete.EntityFramework
 
             modelBuilder.Entity<Car>()
                 .HasData(
-                    new Car { CarId=1,BrandId=2,ColorId=3,DailyPrice=400,Description="Fabia",ModelYear=2018},
-                    new Car { CarId = 2, BrandId = 4, ColorId = 4, DailyPrice = 500, Description = "Tiguan", ModelYear = 2020 },
-                    new Car { CarId =3, BrandId = 3, ColorId = 1, DailyPrice = 300, Description = "Fluence", ModelYear = 2018 },
-                    new Car { CarId = 4, BrandId = 4, ColorId = 5, DailyPrice = 400, Description = "Golf", ModelYear = 2010 },
-                    new Car { CarId = 5, BrandId = 1, ColorId = 2, DailyPrice = 800, Description = "X7", ModelYear = 2018 }
+                    new Car { CarId=1,BrandId=2,ColorId=3,DailyPrice=400,Description="Fabia",ModelYear=2018,IsRentable=true,OwnerId=1},
+                    new Car { CarId = 2, BrandId = 4, ColorId = 4, DailyPrice = 500, Description = "Tiguan", ModelYear = 2020, IsRentable = true, OwnerId = 1 },
+                    new Car { CarId =3, BrandId = 3, ColorId = 1, DailyPrice = 300, Description = "Fluence", ModelYear = 2018, IsRentable = true, OwnerId = 1 },
+                    new Car { CarId = 4, BrandId = 4, ColorId = 5, DailyPrice = 400, Description = "Golf", ModelYear = 2010, IsRentable = true, OwnerId = 1 },
+                    new Car { CarId = 5, BrandId = 1, ColorId = 2, DailyPrice = 800, Description = "X7", ModelYear = 2018, IsRentable = true, OwnerId = 1 }
 
                 );
             modelBuilder.Entity<CarImage>()
