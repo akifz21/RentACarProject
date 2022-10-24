@@ -34,7 +34,6 @@ namespace Business.Concrete
             _carDal.Delete(car);
             return new SuccessResult();
         }
-        //[SecuredOperation("car.list")]
         [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {

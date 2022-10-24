@@ -3,6 +3,7 @@ using Core.Utilities.Results;
 using Entitites.Concrete;
 using DataAccess.Abstract;
 using Core.Utilities.Business;
+using Entitites.DTOs;
 
 namespace Business.Concrete
 {
@@ -43,6 +44,16 @@ namespace Business.Concrete
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.RentalId==id));
+        }
+
+        public IDataResult<List<Rental>> GetByUserId(int userId)
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r=>r.UserId==userId));
+        }
+
+        public IDataResult<List<RentalDetailsDTO>> GetRentalDetailsByUserId(int userId)
+        {
+            return new SuccessDataResult<List<RentalDetailsDTO>>(_rentalDal.GetRentalDetails(r=>r.UserId == userId));
         }
 
         public IResult Update(Rental rental)
