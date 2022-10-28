@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("geybyid")]
+        [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
             var result = _rentalService.GetById(id);
@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         [HttpGet("getDetailsByUserId")]
         public IActionResult GetRentalDetailsByUserId(int userId)
         {
-            var result = _rentalService.GetByUserId(userId);
+            var result = _rentalService.GetRentalDetailsByUserId(userId);
             if (result.Success)
             {
                 return Ok(result);

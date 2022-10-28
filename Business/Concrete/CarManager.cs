@@ -88,5 +88,9 @@ namespace Business.Concrete
             _carDal.UpdateIsRentable(carId, isRentable);
             return new SuccessResult();
         }
+        public IDataResult<List<CarDetailsDto>> GetCarDetailsByUserId(int userId)
+        {
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(c => c.OwnerId == userId));
+        }
     }
 }

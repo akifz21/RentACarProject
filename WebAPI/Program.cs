@@ -11,6 +11,7 @@ using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace WebAPI
@@ -25,7 +26,7 @@ namespace WebAPI
 
             builder.Services.AddControllers();
             builder.Services.AddCors();
-
+            builder.Services.AddDbContext<RentACarContext>();
 
             var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -71,6 +72,11 @@ namespace WebAPI
                 app.UseSwaggerUI();
             }
             app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            using (var scope = app.Services.CreateScope())
+            {
+                var dataContext = scope.ServiceProvider.GetRequiredService<RentACarContext>();
+                dataContext.Database.Migrate();
+            }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
